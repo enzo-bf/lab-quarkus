@@ -1,56 +1,156 @@
-# voting-app
+Voting App
+Microsserviço responsável pelo registro e processamento de votos dentro do Sistema Distribuído de Eleições desenvolvido com Quarkus.
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Este projeto faz parte da arquitetura distribuída do laboratório Quarkus da DIO e atua como responsável pela recepção, validação e persistência dos votos realizados pelos eleitores. Baseado no projeto Thiago Poiani disponível em lab-quarkus. 【1-151406】【2-30a0a5】
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+Arquitetura da Solução
+┌─────────────────────────┐
+│ election-management     │
+│ Gerencia eleições       │
+└─────────────┬───────────┘
+              │
+              ▼
+┌─────────────────────────┐
+│ voting-app             │
+│ Recebe e valida votos  │
+└─────────────┬───────────┘
+              │
+              ▼
+┌─────────────────────────┐
+│ result-app             │
+│ Apuração dos votos     │
+└─────────────────────────┘
 
-## Running the application in dev mode
+Banco de Dados: MongoDB
+Containerização: Docker
+Framework: Quarkus
+Responsabilidades
+O microsserviço Voting App é responsável por:
 
-You can run your application in dev mode that enables live coding using:
-```shell script
+Registrar votos de eleitores;
+Validar se a eleição está ativa;
+Garantir a integridade dos dados;
+Persistir os votos no MongoDB;
+Disponibilizar endpoints REST para operações de votação.
+Tecnologias Utilizadas
+Java
+Quarkus
+RESTEasy Reactive
+MongoDB
+Docker
+OpenTelemetry
+SmallRye Health
+Maven
+Extensões identificadas no projeto: RESTEasy Reactive, OpenTelemetry, SmallRye Health, Logging GELF e Context Propagation. 【1-151406】
+
+Executando em Ambiente de Desenvolvimento
 ./mvnw compile quarkus:dev
-```
+Após iniciar a aplicação:
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+http://localhost:8080
+Dev UI:
 
-## Packaging and running the application
+http://localhost:8080/q/dev
+A interface Dev UI está disponível apenas em modo de desenvolvimento. 【1-151406】
 
-The application can be packaged using:
-```shell script
+Build da Aplicação
+Pacote padrão:
+
 ./mvnw package
-```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+Execução:
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+java -jar target/quarkus-app/quarkus-run.jar
+Empacotamento Uber Jar:
 
-If you want to build an _über-jar_, execute the following command:
-```shell script
 ./mvnw package -Dquarkus.package.type=uber-jar
-```
+Execução:
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+java -jar target/*-runner.jar
+*1-151406】
 
-## Creating a native executable
+Executável N*tivo
+Com GraalVM:
 
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
-```
+./mvnw package -Pnative```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
+Sem GraalVM local*
 
-You can then execute your native executable with: `./target/voting-app-1.0.0-SNAPSHOT-runner`
+```bash
+./mvnw package \
+*Pnative \
+-Dquarkus.native.container-build-true
+Execução:
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
+/target/voting-app-1.0. -SNAPSHOT-runner
+1-151406】
 
-## Related Guides
+Endpoints
+egistrarVoto
+POST /votes
+``
 
-- Logging GELF ([guide](https://quarkus.io/guides/centralized-log-management)): Log using the Graylog Extended Log Format and centralize your logs in ELK or EFK
-- SmallRye Health ([guide](https://quarkus.io/guides/microprofile-health)): Monitor service health
-- SmallRye Context Propagation ([guide](https://quarkus.io/guides/context-propagation)): Propagate contexts between managed threads in reactive applications
-- RESTEasy Reactive ([guide](https://quarkus.io/guides/resteasy-reactive)): A JAX-RS implementation utilizing build time processing and Vert.x. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it.
-- OpenTelemetry ([guide](https://quarkus.io/guides/opentelemetry)): Use OpenTelemetry to trace services
+Exemplo:
+
+```json
+{
+ *"electionId": "1",
+  "voterId": "100",
+  "candidateId": "10"
+}
+## Consultar Votos por Eleição
+
+`` http GET /votes/election/{electionId}
+
+
+---
+
+## Health*Check
+
+Endpoint:
+
+```http
+GET*/q/health
+Utilizado paramonitoramento da saúde da aplicação.
+
+*--
+
+Observ*bilidade
+Este microsserviço possui suporte para:
+
+OpenTelemetry
+Lgs centralzados
+Health Checks
+Possbilitando monitoramento e rastreamnto distribuído. 1-151406】
+
+Estrutura do Projeto
+src
+├── main
+│   ├── java
+│   │   ├── resource
+│   │   ├── service
+│   │   ├── repository
+│   │   ├── dto
+│   │   ├── entity
+│   │   └── config
+│   └── resources
+└── test
+## Aprendizados
+
+Durante esteprojeto foram praticados conceitosde:
+
+-*Microsserviços
+
+APIs REST
+Comuncaçãoentre Serviços
+MongoDB
+Quark*s
+Docker
+Observabilidade - Desenvolvimento Cloud Native
+## Referências
+
+Quarkus: https://quarkus.io
+MongoDB: https://mongodb.com
+Docker: https://docker.com -DIO: https://www.dio.me -Projeto Original https://github.com/thpoiani/lab-quarkus
+Enzo Francisco
+
+Desenvolvedor Back-End focado em Java, Microsserviços, Cloud Computing e Arquitetura de Software.
