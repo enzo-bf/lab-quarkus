@@ -1,20 +1,30 @@
-Sistema Distribuído de Eleições com Quarkus
-📖 Sobre o Projeto
+# Sistema Distribuído de Eleições com Quarkus
+
+## 📖 Sobre o Projeto
+
 Este projeto consiste no desenvolvimento de um sistema distribuído e escalável para gerenciamento de eleições utilizando Java, Quarkus, MongoDB e Docker.
 
 A aplicação é composta por múltiplos microsserviços responsáveis pelo gerenciamento das eleições, registro de votos e consulta de resultados, demonstrando conceitos modernos de arquitetura distribuída e aplicações cloud-native.
 
-🚀 Tecnologias Utilizadas
-Java
-Quarkus
-MongoDB
-Docker
-Docker Compose
-REST APIs
-Maven
-OpenTelemetry
-SmallRye Health
-🏗 Arquitetura da Solução
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- Java
+- Quarkus
+- MongoDB
+- Docker
+- Docker Compose
+- REST APIs
+- Maven
+- OpenTelemetry
+- SmallRye Health
+
+---
+
+## 🏗 Arquitetura da Solução
+
+```text
 ┌─────────────────────────────┐
 │ Election Management         │
 │ Gerenciamento de Eleições   │
@@ -36,7 +46,13 @@ SmallRye Health
                ▼
 
           MongoDB
-📂 Estrutura do Projeto
+```
+
+---
+
+## 📂 Estrutura do Projeto
+
+```text
 lab-quarkus
 │
 ├── election-management
@@ -48,81 +64,141 @@ lab-quarkus
 ├── docker-compose.yml
 │
 └── README.md
-🔧 Microsserviços
-Election Management
+```
+
+---
+
+## 🔧 Microsserviços
+
+### Election Management
+
 Responsável por:
 
-Criar eleições
-Atualizar eleições
-Encerrar eleições
-Consultar eleições
-Gerenciar candidatos
-Voting App
+- Criar eleições
+- Atualizar eleições
+- Encerrar eleições
+- Consultar eleições
+- Gerenciar candidatos
+
+---
+
+### Voting App
+
 Responsável por:
 
-Receber votos
-Validar eleições ativas
-Registrar votos
-Garantir integridade das informações
-Result App
+- Receber votos
+- Validar eleições ativas
+- Registrar votos
+- Garantir integridade das informações
+
+---
+
+### Result App
+
 Responsável por:
 
-Apurar resultados
-Totalizar votos
-Exibir estatísticas
-Apresentar vencedores
-🐳 Executando com Docker
+- Apurar resultados
+- Totalizar votos
+- Exibir estatísticas
+- Apresentar vencedores
+
+---
+
+## 🐳 Executando com Docker
+
 Subir ambiente:
 
+```bash
 docker compose up -d
+```
+
 Verificar containers:
 
+```bash
 docker ps
+```
+
 Parar ambiente:
 
+```bash
 docker compose down
-▶️ Executando Localmente
+```
+
+---
+
+## ▶️ Executando Localmente
+
 Entrar em um dos microsserviços:
 
+```bash
 cd voting-app
+```
+
 Executar em modo desenvolvimento:
 
+```bash
 ./mvnw compile quarkus:dev
+```
+
 A aplicação ficará disponível em:
 
+```text
 http://localhost:8080
-🔍 Conceitos Praticados
+```
+
+---
+
+## 🔍 Conceitos Praticados
+
 Durante este projeto foram explorados conceitos como:
 
-Microsserviços
-APIs REST
-Arquitetura Distribuída
-MongoDB
-Docker
-Quarkus
-Desenvolvimento Cloud Native
-Observabilidade
-Monitoramento de Aplicações
-📚 Aprendizados
+- Microsserviços
+- APIs REST
+- Arquitetura Distribuída
+- MongoDB
+- Docker
+- Quarkus
+- Desenvolvimento Cloud Native
+- Observabilidade
+- Monitoramento de Aplicações
+
+---
+
+## 📚 Aprendizados
+
 Este laboratório proporcionou experiência prática no desenvolvimento de aplicações modernas utilizando o framework Quarkus, permitindo compreender como aplicações distribuídas podem ser construídas, implantadas e escaladas utilizando tecnologias amplamente adotadas pelo mercado.
 
-💡 Melhorias Futuras
-Implementação de autenticação JWT
-Integração com Keycloak
-Dashboard para acompanhamento das eleições
-Integração com mensageria (Kafka)
-Deploy em Kubernetes
-Pipeline CI/CD
-📸 Demonstração
+---
+
+## 💡 Melhorias Futuras
+
+- Implementação de autenticação JWT
+- Integração com Keycloak
+- Dashboard para acompanhamento das eleições
+- Integração com mensageria (Kafka)
+- Deploy em Kubernetes
+- Pipeline CI/CD
+
+---
+
+## 📸 Demonstração
+
 Adicionar aqui imagens da aplicação, diagramas ou capturas de tela do ambiente em execução.
 
-👨‍💻 Autor
-Enzo Francisco
+---
+
+## 👨‍💻 Autor
+
+**Enzo Francisco**
 
 Desenvolvedor Back-End apaixonado por Java, Microsserviços, Cloud Computing e Arquitetura de Software.
 
-🔗 Referências
-https://quarkus.io
-https://www.mongodb.com
-https://www.docker.com
-https://github.com/thpoiani/lab-quarkus
+---
+
+## 🔗 Referências
+
+- https://quarkus.io
+- https://www.mongodb.com
+- https://www.docker.com
+- https://github.com/thpoiani/lab-quarkus
+- 
